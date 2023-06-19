@@ -23,9 +23,9 @@
 //FFT Settings
 #define SAMPLES         1024    // Must be a power of 2
 #define SAMPLING_FREQ   40000   // Hz, must be 40000 or less due to ADC conversion time. Determines maximum frequency that can be analysed by the FFT Fmax=sampleF/2.
-#define NUM_BANDS       7            // To change this, you will need to change the bunch of if statements describing the mapping from bins to bands
+#define NUM_BANDS       3            // To change this, you will need to change the bunch of if statements describing the mapping from bins to bands
 #define NOISE           500           // Used as a crude noise filter, values below this are ignored
-#define AMPLITUDE       1000          // Depending on your audio source level, you may need to alter this value. Can be used as a 'sensitivity' control.
+#define AMPLITUDE       7000          // Depending on your audio source level, you may need to alter this value. Can be used as a 'sensitivity' control.
 #define TOP             8
 
 
@@ -35,7 +35,7 @@ typedef enum {
     Right_first,
     Circle} eyebrow_shape;
 
-typedef enum {Display_off, VU, Normal, Happy, Sad, Mad, Concentrated} display_mode;
+typedef enum {Display_off, VU, Light, Normal, Happy, Sad, Mad, Concentrated} display_mode;
 
 void init_lights();
 
@@ -43,7 +43,7 @@ void display_matrix(display_mode state);
 
 void display_VU(uint8_t low_band, uint8_t middle_band, uint8_t high_band);
 
-void animation();
+//void animation(); //under development
 void normal_eyes_anim();
 void light();
 
@@ -56,6 +56,8 @@ void mad_stop();
 
 void concentrate_start();
 void concentrate_stop();
+
+void display_bat_low();
 
 uint8_t * get_band();
 

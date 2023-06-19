@@ -34,7 +34,7 @@ typedef struct motor_controller_pins {
     boolean inB;
     boolean sel;
     uint8_t pwm;
-} DC_motor_controller_pins; /
+} DC_motor_controller_pins;
 
 
 void init_DC_motor_controller();

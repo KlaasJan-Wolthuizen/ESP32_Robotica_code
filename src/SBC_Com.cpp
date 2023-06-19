@@ -13,7 +13,6 @@
 #include "Lights.hpp"
 
 
-
 /* Variable initialization */
 // A pair of varibles to help parse serial commands (thanks Fergs)
 int arg = 0;
@@ -119,7 +118,7 @@ int run_command() {
 
         case MATRIX:
             //change matrix to mode given by command argument
-            mode_SBC = (display_mode)arg1; //function to display runs in main loop
+            mode_SBC = (display_mode)arg1; //sets mode of function display_matrix(mode_SBC), this function runs in main loop.
             break;
 
         case STATE:

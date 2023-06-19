@@ -28,3 +28,20 @@
     Serial.print("Ok");
     break;
     */
+//
+
+//void blink(); //function to see if the microcontroller is running.
+//
+//unsigned long start_millis;
+//  start_millis = millis(); //used for the blink sketch, so that delays do not have to be used
+//void blink() {
+//    if (millis()-start_millis > 2000) {
+//        start_millis = millis();
+//    }
+//    else if (millis()-start_millis > 1000) {
+//        digitalWrite(BUILTIN_LED, LOW);
+//    }
+//    else if (millis()-start_millis > 0) {
+//        digitalWrite(BUILTIN_LED, HIGH);
+//    }
+//}

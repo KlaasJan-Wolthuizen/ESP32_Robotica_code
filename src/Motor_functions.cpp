@@ -81,7 +81,7 @@ void simple_left_DC_motor_control(int16_t speed) {
     DC_motor_controller_pins left_dc_motor;
     left_dc_motor = simple_DC_motor_control(speed);     //decide pin values of motorcontroller
 
-    //set pins which are are controlled by a shift register.
+    //set pins which are controlled by a shift register by writing to specific bit.
     shift_data = change_bit(shift_data, left_dc_motor.inA, SIPO_PIN_DC_MOTOR_LEFT_INA);
     shift_data = change_bit(shift_data, left_dc_motor.inB, SIPO_PIN_DC_MOTOR_LEFT_INB);
     update_register(shift_data);
@@ -97,7 +97,7 @@ void simple_right_DC_motor_control(int16_t speed) {
     DC_motor_controller_pins right_dc_motor;
     right_dc_motor = simple_DC_motor_control(speed); //decide pin values of motorcontroller
 
-    //set pins which are are controlled by a shift register.
+    //set pins which are controlled by a shift register by writing to specific bit.
     shift_data = change_bit(shift_data, right_dc_motor.inA, SIPO_PIN_DC_MOTOR_RIGHT_INA);
     shift_data = change_bit(shift_data, right_dc_motor.inB, SIPO_PIN_DC_MOTOR_RIGHT_INB);
     shift_data = change_bit(shift_data, right_dc_motor.sel, SIPO_PIN_DC_MOTOR_RIGHT_SEL);
@@ -113,7 +113,7 @@ void simple_track_DC_motor_control(int16_t speed) {
     DC_motor_controller_pins track_dc_motor;
     track_dc_motor = simple_DC_motor_control(speed); //decide pin values of motorcontroller
 
-    //set pins which are are controlled by a shift register.
+    //set pins which are controlled by a shift register by writing to specific bit.
     shift_data = change_bit(shift_data, track_dc_motor.inA, SIPO_PIN_DC_MOTOR_TRACK_INA);
     shift_data = change_bit(shift_data, track_dc_motor.inB, SIPO_PIN_DC_MOTOR_TRACK_INB);
     shift_data = change_bit(shift_data, track_dc_motor.inB, SIPO_PIN_DC_MOTOR_TRACK_SEL);

@@ -28,21 +28,17 @@ void powerController() {
     }
 
     else if(get_bat_voltage() > 9.9) { // if voltage is above 9.9V then keep on the main switch
+        digitalWrite(ESP32_PIN_SHUT_REQ_SBC, HIGH);
         digitalWrite(ESP32_PIN_EN_MAIN_SW, HIGH); // Turn on main switch
 //        char debug_str1[100] = "Main switch on";
-//        send_debug_data(topic_str, debug_str1);\
+//        send_debug_data(topic_str, debug_str1);
     }
     else { // if the battery voltage is low, turn of the system
-        simple_right_DC_motor_control(0);        //turn right motors
-        simple_left_DC_motor_control(0);         //turn off left motors
-        simple_track_DC_motor_control(0);        //turn off track motor
-
-        display_matrix(Display_off);                //turn off matrix display
-
         shutdown_SBC(); // turn of SBC before cutting of power
 //        char debug_str2[100] = "Main switch off (else statement)";
 //        send_debug_data(topic_str, debug_str2);
         digitalWrite(ESP32_PIN_EN_MAIN_SW, LOW); //turn of main switch
+
     }
 }
 
@@ -57,8 +53,15 @@ void start_SBC() {
 
 void shutdown_SBC() {
     // this function enables the SBC (Single board computer) to shutdown before the power is cuttoff
-    digitalWrite(ESP32_PIN_START_SHUT_SBC, LOW); //give signal to shutdown
-    delay(15000);   //wait for 15 seconds so that the SBC can shutdown
+    simple_right_DC_motor_control(0);        //turn right motors
+    simple_left_DC_motor_control(0);         //turn off left motors
+    simple_track_DC_motor_control(0);        //turn off track motor
+    display_matrix(Display_off);                //turn off matrix display
+    display_bat_low();                              // indicate low battery voltage
+
+    digitalWrite(ESP32_PIN_SHUT_REQ_SBC, LOW);
+
+    delay(20000);   //wait for 20 seconds so that the SBC can shutdown
 }
 
 float_t get_bat_voltage() {
